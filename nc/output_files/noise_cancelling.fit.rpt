@@ -1,5 +1,5 @@
 Fitter report for noise_cancelling
-Fri May 22 17:17:12 2020
+Fri May 22 17:30:16 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -73,7 +73,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Fri May 22 17:17:12 2020       ;
+; Fitter Status                      ; Successful - Fri May 22 17:30:16 2020       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; noise_cancelling                            ;
 ; Top-level Entity Name              ; NC                                          ;
@@ -164,7 +164,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   4.1%      ;
+;     Processor 2            ;   4.2%      ;
 +----------------------------+-------------+
 
 
@@ -2067,14 +2067,14 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.54 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.60 seconds.
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:03
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:04
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169064): Following 52 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
     Info (169065): Pin ARDUINO_IO[15] has a permanently disabled output enable File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
@@ -2131,8 +2131,8 @@ Warning (169064): Following 52 pins have no output enable or a GND or VCC output
     Info (169065): Pin GPIO[1] has a permanently disabled output enable File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
 Info (144001): Generated suppressed messages file /home/marius/Documents/NoiseCancelling_Proj/nc/output_files/noise_cancelling.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 119 warnings
-    Info: Peak virtual memory: 1371 megabytes
-    Info: Processing ended: Fri May 22 17:17:13 2020
+    Info: Peak virtual memory: 1376 megabytes
+    Info: Processing ended: Fri May 22 17:30:17 2020
     Info: Elapsed time: 00:00:26
     Info: Total CPU time (on all processors): 00:00:26
 

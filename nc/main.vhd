@@ -170,7 +170,7 @@ begin
   clk   <= MAX10_CLK1_50;
 
   
-  LEDR(9 downto 0) <= in_gain_coeff(9 downto 0);
+  LEDR(9 downto 0) <= std_logic_vector(in_gain_coeff)(9 downto 0);
   
   --coeff_gain <= to_signed(100,16);
   coeff_gain <= signed(in_gain_coeff(15 downto 0));
