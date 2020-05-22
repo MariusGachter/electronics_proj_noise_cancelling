@@ -79,6 +79,8 @@ architecture arch of NC is
   
   -- bus stuff
   signal in_gain_coeff  : std_logic_vector(31 downto 0);
+  signal gain_multiplier : signed(31 downto 0);
+  signal coeff_gain : signed(15 downto 0);
   
 begin
 
@@ -159,7 +161,7 @@ begin
     io_spi_miso_writeEnable => open,
     io_spi_ss               => GPIO(1),
 	 
-    io_inGain  => in_gain_coeff,
+    io_outGain  => in_gain_coeff,
     clk => MAX10_CLK1_50,
     reset => reset);
   
@@ -167,10 +169,14 @@ begin
   reset <= not key(0);
   clk   <= MAX10_CLK1_50;
 
-	
-  dac_sound_out <= adc_noise_in*in_gain_coeff;
   
-  -- the signals to the DAC sound out:
+  LEDR(9 downto 0) <= in_gain_coeff(9 downto 0);
+  
+  --coeff_gain <= to_signed(100,16);
+  coeff_gain <= signed(in_gain_coeff(15 downto 0));
+  gain_multiplier <= adc_sound_in*coeff_gain;
+  dac_sound_out <= gain_multiplier(29 downto 14);
+  --dac_sound_out <= adc_sound_in;
   arduino_io(0)  <= dac_cs_n;
   arduino_io(1)  <= dac_sclk;
   arduino_io(2)  <= dac_din;

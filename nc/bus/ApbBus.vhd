@@ -1,5 +1,5 @@
 -- Generator : SpinalHDL v1.4.0    git head : ecb5a80b713566f417ea3ea061f9969e73770a7f
--- Date      : 22/05/2020, 14:55:00
+-- Date      : 22/05/2020, 16:38:36
 -- Component : ApbBus
 
 library IEEE;
@@ -878,7 +878,7 @@ entity ApbBus is
     io_spi_miso_write : out std_logic;
     io_spi_miso_writeEnable : out std_logic;
     io_spi_ss : in std_logic;
-    io_inGain : in std_logic_vector(31 downto 0);
+    io_outGain : out std_logic_vector(31 downto 0);
     clk : in std_logic;
     reset : in std_logic
   );
@@ -899,6 +899,7 @@ architecture arch of ApbBus is
   signal busCtrl_askRead : std_logic;
   signal busCtrl_doWrite : std_logic;
   signal busCtrl_doRead : std_logic;
+  signal io_outGain_driver : std_logic_vector(31 downto 0);
 begin
   busMaster : entity work.SpiApbDriver
     port map ( 
@@ -920,12 +921,12 @@ begin
   io_spi_miso_write <= busMaster_io_spi_miso_write;
   io_spi_miso_writeEnable <= busMaster_io_spi_miso_writeEnable;
   zz_1 <= pkg_toStdLogic(true);
-  process(busMaster_io_apb_PADDR,io_inGain)
+  process(busMaster_io_apb_PADDR,io_outGain_driver)
   begin
     zz_2 <= pkg_stdLogicVector("00000000000000000000000000000000");
     case busMaster_io_apb_PADDR is
       when "00000000000000000000000001100100" =>
-        zz_2(31 downto 0) <= io_inGain;
+        zz_2(31 downto 0) <= io_outGain_driver;
       when others =>
     end case;
   end process;
@@ -934,5 +935,19 @@ begin
   busCtrl_askRead <= ((pkg_extract(busMaster_io_apb_PSEL,0) and busMaster_io_apb_PENABLE) and (not busMaster_io_apb_PWRITE));
   busCtrl_doWrite <= (((pkg_extract(busMaster_io_apb_PSEL,0) and busMaster_io_apb_PENABLE) and zz_1) and busMaster_io_apb_PWRITE);
   busCtrl_doRead <= (((pkg_extract(busMaster_io_apb_PSEL,0) and busMaster_io_apb_PENABLE) and zz_1) and (not busMaster_io_apb_PWRITE));
+  io_outGain <= io_outGain_driver;
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      case busMaster_io_apb_PADDR is
+        when "00000000000000000000000001100100" =>
+          if busCtrl_doWrite = '1' then
+            io_outGain_driver <= pkg_extract(busMaster_io_apb_PWDATA,31,0);
+          end if;
+        when others =>
+      end case;
+    end if;
+  end process;
+
 end arch;
 

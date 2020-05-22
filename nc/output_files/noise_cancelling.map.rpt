@@ -1,5 +1,5 @@
 Analysis & Synthesis report for noise_cancelling
-Fri May 15 16:27:49 2020
+Fri May 22 17:16:46 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -13,20 +13,26 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |NC|DACWriter:dac|current_state
-  9. State Machine - |NC|ADCReader:adc_noise|current_state
- 10. State Machine - |NC|ADCReader:adc_sound|current_state
- 11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: TickGenerator:tickGen
- 16. Port Connectivity Checks: "DACWriter:dac"
- 17. Port Connectivity Checks: "ADCReader:adc_noise"
- 18. Port Connectivity Checks: "ADCReader:adc_sound"
- 19. Post-Synthesis Netlist Statistics for Top Partition
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |NC|ApbBus:myBus|SpiApbDriver:busMaster|fsm_stateReg
+ 10. State Machine - |NC|DACWriter:dac|current_state
+ 11. State Machine - |NC|ADCReader:adc_noise|current_state
+ 12. State Machine - |NC|ADCReader:adc_sound|current_state
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: TickGenerator:tickGen
+ 18. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 19. lpm_mult Parameter Settings by Entity Instance
+ 20. Port Connectivity Checks: "ApbBus:myBus|SpiApbDriver:busMaster"
+ 21. Port Connectivity Checks: "ApbBus:myBus"
+ 22. Port Connectivity Checks: "DACWriter:dac"
+ 23. Port Connectivity Checks: "ADCReader:adc_noise"
+ 24. Port Connectivity Checks: "ADCReader:adc_sound"
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
 
 
 
@@ -53,19 +59,19 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri May 15 16:27:49 2020       ;
+; Analysis & Synthesis Status        ; Successful - Fri May 22 17:16:46 2020       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; noise_cancelling                            ;
 ; Top-level Entity Name              ; NC                                          ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 135                                         ;
-;     Total combinational functions  ; 117                                         ;
-;     Dedicated logic registers      ; 89                                          ;
-; Total registers                    ; 89                                          ;
-; Total pins                         ; 39                                          ;
+; Total logic elements               ; 313                                         ;
+;     Total combinational functions  ; 251                                         ;
+;     Dedicated logic registers      ; 228                                         ;
+; Total registers                    ; 228                                         ;
+; Total pins                         ; 75                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 2                                           ;
 ; Total PLLs                         ; 0                                           ;
 ; UFM blocks                         ; 0                                           ;
 ; ADC blocks                         ; 0                                           ;
@@ -175,16 +181,25 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                     ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                              ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
-; TickGenerator.vhd                ; yes             ; User VHDL File  ; /home/marius/Documents/noise_cancelling/TickGenerator.vhd ;         ;
-; ADCReader.vhd                    ; yes             ; User VHDL File  ; /home/marius/Documents/noise_cancelling/ADCReader.vhd     ;         ;
-; DACWriter.vhd                    ; yes             ; User VHDL File  ; /home/marius/Documents/noise_cancelling/DACWriter.vhd     ;         ;
-; main.vhd                         ; yes             ; User VHDL File  ; /home/marius/Documents/noise_cancelling/main.vhd          ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                     ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
+; bus/ApbBus.vhd                   ; yes             ; User VHDL File               ; /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd                    ;         ;
+; TickGenerator.vhd                ; yes             ; User VHDL File               ; /home/marius/Documents/NoiseCancelling_Proj/nc/TickGenerator.vhd                 ;         ;
+; ADCReader.vhd                    ; yes             ; User VHDL File               ; /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd                     ;         ;
+; DACWriter.vhd                    ; yes             ; User VHDL File               ; /home/marius/Documents/NoiseCancelling_Proj/nc/DACWriter.vhd                     ;         ;
+; main.vhd                         ; yes             ; User VHDL File               ; /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd                          ;         ;
+; FIR_COEF_RAM.vhd                 ; yes             ; User Wizard-Generated File   ; /home/marius/Documents/NoiseCancelling_Proj/nc/FIR_COEF_RAM.vhd                  ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/lpm_mult.tdf    ;         ;
+; aglobal191.inc                   ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc  ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/lpm_add_sub.inc ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/multcore.inc    ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/bypassff.inc    ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; /home/marius/intelFPGA_lite/19.1/quartus/libraries/megafunctions/altshift.inc    ;         ;
+; db/mult_pgs.tdf                  ; yes             ; Auto-Generated Megafunction  ; /home/marius/Documents/NoiseCancelling_Proj/nc/db/mult_pgs.tdf                   ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------------+
@@ -192,45 +207,86 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------+
 ; Resource                                    ; Usage               ;
 +---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 135                 ;
+; Estimated Total logic elements              ; 313                 ;
 ;                                             ;                     ;
-; Total combinational functions               ; 117                 ;
+; Total combinational functions               ; 251                 ;
 ; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 57                  ;
-;     -- 3 input functions                    ; 7                   ;
-;     -- <=2 input functions                  ; 53                  ;
+;     -- 4 input functions                    ; 91                  ;
+;     -- 3 input functions                    ; 63                  ;
+;     -- <=2 input functions                  ; 97                  ;
 ;                                             ;                     ;
 ; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 78                  ;
-;     -- arithmetic mode                      ; 39                  ;
+;     -- normal mode                          ; 203                 ;
+;     -- arithmetic mode                      ; 48                  ;
 ;                                             ;                     ;
-; Total registers                             ; 89                  ;
-;     -- Dedicated logic registers            ; 89                  ;
+; Total registers                             ; 228                 ;
+;     -- Dedicated logic registers            ; 228                 ;
 ;     -- I/O registers                        ; 0                   ;
 ;                                             ;                     ;
-; I/O pins                                    ; 39                  ;
+; I/O pins                                    ; 75                  ;
 ;                                             ;                     ;
-; Embedded Multiplier 9-bit elements          ; 0                   ;
+; Embedded Multiplier 9-bit elements          ; 2                   ;
 ;                                             ;                     ;
 ; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
-; Maximum fan-out                             ; 89                  ;
-; Total fan-out                               ; 704                 ;
-; Average fan-out                             ; 2.35                ;
+; Maximum fan-out                             ; 228                 ;
+; Total fan-out                               ; 1660                ;
+; Average fan-out                             ; 2.43                ;
 +---------------------------------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                        ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+---------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name       ; Entity Name   ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+---------------+--------------+
-; |NC                        ; 117 (0)             ; 89 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 39   ; 0            ; 0          ; |NC                       ; NC            ; work         ;
-;    |ADCReader:adc_noise|   ; 19 (19)             ; 13 (13)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ADCReader:adc_noise   ; ADCReader     ; work         ;
-;    |ADCReader:adc_sound|   ; 25 (25)             ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ADCReader:adc_sound   ; ADCReader     ; work         ;
-;    |DACWriter:dac|         ; 46 (46)             ; 26 (26)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|DACWriter:dac         ; DACWriter     ; work         ;
-;    |TickGenerator:tickGen| ; 27 (27)             ; 18 (18)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|TickGenerator:tickGen ; TickGenerator ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+---------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                               ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                             ; Entity Name   ; Library Name ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------+---------------+--------------+
+; |NC                                         ; 251 (0)             ; 228 (0)                   ; 0           ; 0          ; 2            ; 0       ; 1         ; 75   ; 0            ; 0          ; |NC                                                                                             ; NC            ; work         ;
+;    |ADCReader:adc_noise|                    ; 19 (19)             ; 13 (13)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ADCReader:adc_noise                                                                         ; ADCReader     ; work         ;
+;    |ADCReader:adc_sound|                    ; 25 (25)             ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ADCReader:adc_sound                                                                         ; ADCReader     ; work         ;
+;    |ApbBus:myBus|                           ; 135 (39)            ; 139 (32)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus                                                                                ; ApbBus        ; work         ;
+;       |SpiApbDriver:busMaster|              ; 96 (11)             ; 107 (40)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus|SpiApbDriver:busMaster                                                         ; SpiApbDriver  ; work         ;
+;          |SpiReceiver:spiReceiver_1|        ; 85 (85)             ; 67 (61)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1                               ; SpiReceiver   ; work         ;
+;             |BufferCC:io_spi_mosi_buffercc| ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|BufferCC:io_spi_mosi_buffercc ; BufferCC      ; work         ;
+;             |BufferCC:io_spi_sclk_buffercc| ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|BufferCC:io_spi_sclk_buffercc ; BufferCC      ; work         ;
+;             |BufferCC:io_spi_ss_buffercc|   ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|BufferCC:io_spi_ss_buffercc   ; BufferCC      ; work         ;
+;    |DACWriter:dac|                          ; 45 (45)             ; 26 (26)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|DACWriter:dac                                                                               ; DACWriter     ; work         ;
+;    |TickGenerator:tickGen|                  ; 27 (27)             ; 18 (18)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NC|TickGenerator:tickGen                                                                       ; TickGenerator ; work         ;
+;    |lpm_mult:Mult0|                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0          ; |NC|lpm_mult:Mult0                                                                              ; lpm_mult      ; work         ;
+;       |mult_pgs:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0          ; |NC|lpm_mult:Mult0|mult_pgs:auto_generated                                                      ; mult_pgs      ; work         ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 1           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 2           ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 0           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |NC|ApbBus:myBus|SpiApbDriver:busMaster|fsm_stateReg                                                                                                                                                    ;
++------------------------------------+-----------------------------+------------------------------------+----------------------------+-----------------------------------+----------------------------+-------------------+
+; Name                               ; fsm_stateReg.fsm_stateWrite ; fsm_stateReg.fsm_statePrepareWrite ; fsm_stateReg.fsm_stateRead ; fsm_stateReg.fsm_statePrepareRead ; fsm_stateReg.fsm_stateIdle ; fsm_stateReg.boot ;
++------------------------------------+-----------------------------+------------------------------------+----------------------------+-----------------------------------+----------------------------+-------------------+
+; fsm_stateReg.boot                  ; 0                           ; 0                                  ; 0                          ; 0                                 ; 0                          ; 0                 ;
+; fsm_stateReg.fsm_stateIdle         ; 0                           ; 0                                  ; 0                          ; 0                                 ; 1                          ; 1                 ;
+; fsm_stateReg.fsm_statePrepareRead  ; 0                           ; 0                                  ; 0                          ; 1                                 ; 0                          ; 1                 ;
+; fsm_stateReg.fsm_stateRead         ; 0                           ; 0                                  ; 1                          ; 0                                 ; 0                          ; 1                 ;
+; fsm_stateReg.fsm_statePrepareWrite ; 0                           ; 1                                  ; 0                          ; 0                                 ; 0                          ; 1                 ;
+; fsm_stateReg.fsm_stateWrite        ; 1                           ; 0                                  ; 0                          ; 0                                 ; 0                          ; 1                 ;
++------------------------------------+-----------------------------+------------------------------------+----------------------------+-----------------------------------+----------------------------+-------------------+
 
 
 Encoding Type:  One-Hot
@@ -287,38 +343,41 @@ Encoding Type:  One-Hot
 +----------------------------+------------------------+-------------------------+-----------------------+------------------------+-----------------------+---------------------------+----------------------------+-------------------------+------------------------+-------------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                       ;
-+------------------------------------------------+---------------------------------------------------------+
-; Register name                                  ; Reason for Removal                                      ;
-+------------------------------------------------+---------------------------------------------------------+
-; ADCReader:adc_sound|start                      ; Merged with ADCReader:adc_noise|start                   ;
-; ADCReader:adc_noise|current_state.conv_high    ; Lost fanout                                             ;
-; ADCReader:adc_noise|current_state.wait_busy    ; Lost fanout                                             ;
-; ADCReader:adc_noise|current_state.pre_clk_high ; Lost fanout                                             ;
-; ADCReader:adc_noise|current_state.pre_clk_low  ; Lost fanout                                             ;
-; ADCReader:adc_sound|current_state.conv_high    ; Lost fanout                                             ;
-; ADCReader:adc_sound|current_state.wait_busy    ; Lost fanout                                             ;
-; ADCReader:adc_sound|current_state.pre_clk_high ; Lost fanout                                             ;
-; ADCReader:adc_sound|current_state.pre_clk_low  ; Lost fanout                                             ;
-; ADCReader:adc_noise|current_state.clk_low      ; Stuck at GND due to stuck port data_in                  ;
-; ADCReader:adc_sound|current_state.clk_low      ; Stuck at GND due to stuck port data_in                  ;
-; ADCReader:adc_sound|cnv_o                      ; Merged with ADCReader:adc_noise|cnv_o                   ;
-; ADCReader:adc_noise|spi_clk_o                  ; Merged with ADCReader:adc_noise|current_state.bit_read  ;
-; ADCReader:adc_sound|current_state.bit_read     ; Merged with ADCReader:adc_noise|current_state.bit_read  ;
-; ADCReader:adc_sound|spi_clk_o                  ; Merged with ADCReader:adc_noise|current_state.bit_read  ;
-; ADCReader:adc_sound|current_state.idle         ; Merged with ADCReader:adc_noise|current_state.idle      ;
-; ADCReader:adc_sound|current_state.latch_out    ; Merged with ADCReader:adc_noise|current_state.latch_out ;
-; ADCReader:adc_sound|current_state.wait_low     ; Merged with ADCReader:adc_noise|current_state.wait_low  ;
-; ADCReader:adc_sound|current_state.clk_set      ; Merged with ADCReader:adc_noise|current_state.clk_set   ;
-; ADCReader:adc_sound|current_state.conv_low     ; Merged with ADCReader:adc_noise|current_state.conv_low  ;
-; ADCReader:adc_sound|current_bit_counter[4]     ; Merged with ADCReader:adc_noise|current_bit_counter[4]  ;
-; ADCReader:adc_sound|current_bit_counter[3]     ; Merged with ADCReader:adc_noise|current_bit_counter[3]  ;
-; ADCReader:adc_sound|current_bit_counter[2]     ; Merged with ADCReader:adc_noise|current_bit_counter[2]  ;
-; ADCReader:adc_sound|current_bit_counter[1]     ; Merged with ADCReader:adc_noise|current_bit_counter[1]  ;
-; ADCReader:adc_sound|current_bit_counter[0]     ; Merged with ADCReader:adc_noise|current_bit_counter[0]  ;
-; Total Number of Removed Registers = 25         ;                                                         ;
-+------------------------------------------------+---------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                            ;
++----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+; Register name                                                                    ; Reason for Removal                                                                         ;
++----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+; ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext_3 ; Merged with ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext ;
+; ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext_2 ; Merged with ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext ;
+; ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext_1 ; Merged with ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|spi_sclk_regNext ;
+; ADCReader:adc_sound|start                                                        ; Merged with ADCReader:adc_noise|start                                                      ;
+; ADCReader:adc_noise|current_state.conv_high                                      ; Lost fanout                                                                                ;
+; ADCReader:adc_noise|current_state.wait_busy                                      ; Lost fanout                                                                                ;
+; ADCReader:adc_noise|current_state.pre_clk_high                                   ; Lost fanout                                                                                ;
+; ADCReader:adc_noise|current_state.pre_clk_low                                    ; Lost fanout                                                                                ;
+; ADCReader:adc_sound|current_state.conv_high                                      ; Lost fanout                                                                                ;
+; ADCReader:adc_sound|current_state.wait_busy                                      ; Lost fanout                                                                                ;
+; ADCReader:adc_sound|current_state.pre_clk_high                                   ; Lost fanout                                                                                ;
+; ADCReader:adc_sound|current_state.pre_clk_low                                    ; Lost fanout                                                                                ;
+; ADCReader:adc_noise|current_state.clk_low                                        ; Stuck at GND due to stuck port data_in                                                     ;
+; ADCReader:adc_sound|current_state.clk_low                                        ; Stuck at GND due to stuck port data_in                                                     ;
+; ADCReader:adc_sound|cnv_o                                                        ; Merged with ADCReader:adc_noise|cnv_o                                                      ;
+; ADCReader:adc_noise|spi_clk_o                                                    ; Merged with ADCReader:adc_noise|current_state.bit_read                                     ;
+; ADCReader:adc_sound|current_state.bit_read                                       ; Merged with ADCReader:adc_noise|current_state.bit_read                                     ;
+; ADCReader:adc_sound|spi_clk_o                                                    ; Merged with ADCReader:adc_noise|current_state.bit_read                                     ;
+; ADCReader:adc_sound|current_state.idle                                           ; Merged with ADCReader:adc_noise|current_state.idle                                         ;
+; ADCReader:adc_sound|current_state.latch_out                                      ; Merged with ADCReader:adc_noise|current_state.latch_out                                    ;
+; ADCReader:adc_sound|current_state.wait_low                                       ; Merged with ADCReader:adc_noise|current_state.wait_low                                     ;
+; ADCReader:adc_sound|current_state.clk_set                                        ; Merged with ADCReader:adc_noise|current_state.clk_set                                      ;
+; ADCReader:adc_sound|current_state.conv_low                                       ; Merged with ADCReader:adc_noise|current_state.conv_low                                     ;
+; ADCReader:adc_sound|current_bit_counter[4]                                       ; Merged with ADCReader:adc_noise|current_bit_counter[4]                                     ;
+; ADCReader:adc_sound|current_bit_counter[3]                                       ; Merged with ADCReader:adc_noise|current_bit_counter[3]                                     ;
+; ADCReader:adc_sound|current_bit_counter[2]                                       ; Merged with ADCReader:adc_noise|current_bit_counter[2]                                     ;
+; ADCReader:adc_sound|current_bit_counter[1]                                       ; Merged with ADCReader:adc_noise|current_bit_counter[1]                                     ;
+; ADCReader:adc_sound|current_bit_counter[0]                                       ; Merged with ADCReader:adc_noise|current_bit_counter[0]                                     ;
+; Total Number of Removed Registers = 28                                           ;                                                                                            ;
++----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -326,12 +385,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 89    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 228   ;
+; Number of registers using Synchronous Clear  ; 11    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 73    ;
+; Number of registers using Asynchronous Clear ; 122   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 39    ;
+; Number of registers using Clock Enable       ; 152   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -353,16 +412,21 @@ Encoding Type:  One-Hot
 +--------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|DACWriter:dac|current_bit_counter[3]       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|ADCReader:adc_noise|current_bit_counter[2] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|ADCReader:adc_sound|current_bit_counter[3] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |NC|DACWriter:dac|Selector9                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|addressBitCounter_value[0] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|addressBuffer[13]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|dataBitCounter_value[4]    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|dataReceiveBuffer[15]      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|DACWriter:dac|current_bit_counter[0]                                                     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|ADCReader:adc_noise|current_bit_counter[1]                                               ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |NC|ADCReader:adc_sound|current_bit_counter[0]                                               ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |NC|ApbBus:myBus|SpiApbDriver:busMaster|fsm_stateNext                                        ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |NC|DACWriter:dac|Selector9                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------+
@@ -373,6 +437,80 @@ Encoding Type:  One-Hot
 ; divider        ; 50    ; Signed Integer                            ;
 +----------------+-------+-------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                 ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 16       ; Untyped             ;
+; LPM_WIDTHB                                     ; 16       ; Untyped             ;
+; LPM_WIDTHP                                     ; 32       ; Untyped             ;
+; LPM_WIDTHR                                     ; 32       ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_pgs ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance         ;
++---------------------------------------+----------------+
+; Name                                  ; Value          ;
++---------------------------------------+----------------+
+; Number of entity instances            ; 1              ;
+; Entity Instance                       ; lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16             ;
+;     -- LPM_WIDTHB                     ; 16             ;
+;     -- LPM_WIDTHP                     ; 32             ;
+;     -- LPM_REPRESENTATION             ; SIGNED         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO             ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
++---------------------------------------+----------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "ApbBus:myBus|SpiApbDriver:busMaster" ;
++---------------+-------+----------+------------------------------+
+; Port          ; Type  ; Severity ; Details                      ;
++---------------+-------+----------+------------------------------+
+; io_apb_pready ; Input ; Info     ; Stuck at VCC                 ;
++---------------+-------+----------+------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ApbBus:myBus"                                                                                          ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                    ; Type   ; Severity ; Details                                                                             ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; io_spi_miso_writeenable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_outgain[31..16]      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------+
@@ -408,24 +546,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 39                          ;
-; cycloneiii_ff         ; 89                          ;
-;     CLR               ; 50                          ;
-;     ENA               ; 16                          ;
-;     ENA CLR           ; 23                          ;
-; cycloneiii_io_obuf    ; 16                          ;
-; cycloneiii_lcell_comb ; 118                         ;
-;     arith             ; 39                          ;
-;         2 data inputs ; 39                          ;
-;     normal            ; 79                          ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 10                          ;
-;         3 data inputs ; 7                           ;
-;         4 data inputs ; 57                          ;
+; boundary_port         ; 75                          ;
+; cycloneiii_ff         ; 228                         ;
+;     CLR               ; 55                          ;
+;     CLR SCLR          ; 11                          ;
+;     ENA               ; 96                          ;
+;     ENA CLR           ; 56                          ;
+;     plain             ; 10                          ;
+; cycloneiii_io_obuf    ; 52                          ;
+; cycloneiii_lcell_comb ; 251                         ;
+;     arith             ; 48                          ;
+;         2 data inputs ; 46                          ;
+;         3 data inputs ; 2                           ;
+;     normal            ; 203                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 45                          ;
+;         3 data inputs ; 61                          ;
+;         4 data inputs ; 91                          ;
+; cycloneiii_mac_mult   ; 1                           ;
+; cycloneiii_mac_out    ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.16                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 1.98                        ;
 +-----------------------+-----------------------------+
 
 
@@ -434,7 +576,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -444,81 +586,145 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri May 15 16:27:18 2020
+    Info: Processing started: Fri May 22 17:16:17 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off noise_cancelling -c noise_cancelling
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 12 design units, including 4 entities, in source file bus/ApbBus.vhd
+    Info (12022): Found design unit 1: pkg_enum File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 9
+    Info (12022): Found design unit 2: pkg_enum-body File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 17
+    Info (12022): Found design unit 3: pkg_scala2hdl File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 59
+    Info (12022): Found design unit 4: pkg_scala2hdl-body File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 114
+    Info (12022): Found design unit 5: BufferCC-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 447
+    Info (12022): Found design unit 6: SpiReceiver-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 497
+    Info (12022): Found design unit 7: SpiApbDriver-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 717
+    Info (12022): Found design unit 8: ApbBus-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 887
+    Info (12023): Found entity 1: BufferCC File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 438
+    Info (12023): Found entity 2: SpiReceiver File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 479
+    Info (12023): Found entity 3: SpiApbDriver File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 698
+    Info (12023): Found entity 4: ApbBus File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 874
 Info (12021): Found 2 design units, including 1 entities, in source file TickGenerator.vhd
-    Info (12022): Found design unit 1: TickGenerator-arch File: /home/marius/Documents/noise_cancelling/TickGenerator.vhd Line: 18
-    Info (12023): Found entity 1: TickGenerator File: /home/marius/Documents/noise_cancelling/TickGenerator.vhd Line: 6
+    Info (12022): Found design unit 1: TickGenerator-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/TickGenerator.vhd Line: 18
+    Info (12023): Found entity 1: TickGenerator File: /home/marius/Documents/NoiseCancelling_Proj/nc/TickGenerator.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file ADCReader.vhd
-    Info (12022): Found design unit 1: ADCReader-arch File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 29
-    Info (12023): Found entity 1: ADCReader File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 6
+    Info (12022): Found design unit 1: ADCReader-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 29
+    Info (12023): Found entity 1: ADCReader File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file DACWriter.vhd
-    Info (12022): Found design unit 1: DACWriter-arch File: /home/marius/Documents/noise_cancelling/DACWriter.vhd Line: 38
-    Info (12023): Found entity 1: DACWriter File: /home/marius/Documents/noise_cancelling/DACWriter.vhd Line: 12
+    Info (12022): Found design unit 1: DACWriter-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/DACWriter.vhd Line: 38
+    Info (12023): Found entity 1: DACWriter File: /home/marius/Documents/NoiseCancelling_Proj/nc/DACWriter.vhd Line: 12
 Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
-    Info (12022): Found design unit 1: NC-arch File: /home/marius/Documents/noise_cancelling/main.vhd Line: 44
-    Info (12023): Found entity 1: NC File: /home/marius/Documents/noise_cancelling/main.vhd Line: 30
+    Info (12022): Found design unit 1: NC-arch File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 51
+    Info (12023): Found entity 1: NC File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 36
+Info (12021): Found 2 design units, including 1 entities, in source file FIR_COEF_RAM.vhd
+    Info (12022): Found design unit 1: fir_coef_ram-SYN File: /home/marius/Documents/NoiseCancelling_Proj/nc/FIR_COEF_RAM.vhd Line: 56
+    Info (12023): Found entity 1: FIR_COEF_RAM File: /home/marius/Documents/NoiseCancelling_Proj/nc/FIR_COEF_RAM.vhd Line: 43
 Info (12127): Elaborating entity "NC" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at main.vhd(35): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(70): object "adc_noise_in" assigned a value but never read File: /home/marius/Documents/noise_cancelling/main.vhd Line: 70
-Info (12128): Elaborating entity "ADCReader" for hierarchy "ADCReader:adc_sound" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 76
-Warning (10036): Verilog HDL or VHDL warning at ADCReader.vhd(42): object "spi_miso" assigned a value but never read File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 42
-Warning (10492): VHDL Process Statement warning at ADCReader.vhd(60): signal "data_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 60
-Warning (10492): VHDL Process Statement warning at ADCReader.vhd(91): signal "spi_miso_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 91
-Info (12128): Elaborating entity "TickGenerator" for hierarchy "TickGenerator:tickGen" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 95
-Info (12128): Elaborating entity "DACWriter" for hierarchy "DACWriter:dac" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 125
-Warning (10492): VHDL Process Statement warning at DACWriter.vhd(83): signal "data_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/noise_cancelling/DACWriter.vhd Line: 83
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(77): object "adc_noise_in" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 77
+Info (12128): Elaborating entity "ADCReader" for hierarchy "ADCReader:adc_sound" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 88
+Warning (10036): Verilog HDL or VHDL warning at ADCReader.vhd(42): object "spi_miso" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 42
+Warning (10492): VHDL Process Statement warning at ADCReader.vhd(60): signal "data_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 60
+Warning (10492): VHDL Process Statement warning at ADCReader.vhd(91): signal "spi_miso_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 91
+Info (12128): Elaborating entity "TickGenerator" for hierarchy "TickGenerator:tickGen" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 107
+Info (12128): Elaborating entity "DACWriter" for hierarchy "DACWriter:dac" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 137
+Warning (10492): VHDL Process Statement warning at DACWriter.vhd(83): signal "data_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/marius/Documents/NoiseCancelling_Proj/nc/DACWriter.vhd Line: 83
+Info (12128): Elaborating entity "ApbBus" for hierarchy "ApbBus:myBus" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 156
+Warning (10036): Verilog HDL or VHDL warning at ApbBus.vhd(898): object "busCtrl_askWrite" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 898
+Warning (10036): Verilog HDL or VHDL warning at ApbBus.vhd(899): object "busCtrl_askRead" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 899
+Warning (10036): Verilog HDL or VHDL warning at ApbBus.vhd(901): object "busCtrl_doRead" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 901
+Info (12128): Elaborating entity "SpiApbDriver" for hierarchy "ApbBus:myBus|SpiApbDriver:busMaster" File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 904
+Warning (10036): Verilog HDL or VHDL warning at ApbBus.vhd(727): object "fsm_wantExit" assigned a value but never read File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 727
+Info (12128): Elaborating entity "SpiReceiver" for hierarchy "ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1" File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 735
+Info (12128): Elaborating entity "BufferCC" for hierarchy "ApbBus:myBus|SpiApbDriver:busMaster|SpiReceiver:spiReceiver_1|BufferCC:io_spi_sclk_buffercc" File: /home/marius/Documents/NoiseCancelling_Proj/nc/bus/ApbBus.vhd Line: 533
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 177
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 177
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 177
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_pgs.tdf
+    Info (12023): Found entity 1: mult_pgs File: /home/marius/Documents/NoiseCancelling_Proj/nc/db/mult_pgs.tdf Line: 29
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[0]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[1]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[2]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[3]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[4]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[5]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[8]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[9]" and its non-tri-state driver. File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[0]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[1]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[2]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[3]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[4]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[5]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[8]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[9]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13035): Inserted always-enabled tri-state buffer between "ARDUINO_IO[14]" and its non-tri-state driver. File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
 Warning (13039): The following bidirectional pins have no drivers
-    Warning (13040): bidirectional pin "ARDUINO_IO[7]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13040): bidirectional pin "ARDUINO_IO[11]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13040): bidirectional pin "ARDUINO_IO[12]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13040): bidirectional pin "ARDUINO_IO[13]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13040): bidirectional pin "ARDUINO_IO[14]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13040): bidirectional pin "ARDUINO_IO[15]" has no driver File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
+    Warning (13040): bidirectional pin "ARDUINO_IO[7]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13040): bidirectional pin "ARDUINO_IO[11]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13040): bidirectional pin "ARDUINO_IO[12]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13040): bidirectional pin "ARDUINO_IO[13]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13040): bidirectional pin "GPIO[1]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "ARDUINO_IO[15]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13040): bidirectional pin "GPIO[0]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[2]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[3]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[4]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[5]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[6]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[7]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[8]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[9]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[10]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[11]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[12]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[13]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[14]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[15]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[16]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[17]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[18]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[19]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[20]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[21]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[22]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[23]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[24]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[25]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[26]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[27]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[28]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[29]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[30]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[31]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[32]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[33]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[34]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
+    Warning (13040): bidirectional pin "GPIO[35]" has no driver File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 41
 Warning (13032): The following tri-state nodes are fed by constants
-    Warning (13033): The pin "ARDUINO_IO[6]" is fed by VCC File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13033): The pin "ARDUINO_IO[10]" is fed by VCC File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-Info (13000): Registers with preset signals will power-up high File: /home/marius/Documents/noise_cancelling/DACWriter.vhd Line: 162
+    Warning (13033): The pin "ARDUINO_IO[6]" is fed by VCC File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13033): The pin "ARDUINO_IO[10]" is fed by VCC File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+Info (13000): Registers with preset signals will power-up high File: /home/marius/Documents/NoiseCancelling_Proj/nc/DACWriter.vhd Line: 162
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13009): TRI or OPNDRN buffers permanently enabled
-    Warning (13010): Node "ARDUINO_IO[0]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[1]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[2]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[3]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[4]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[5]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[6]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[8]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[9]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-    Warning (13010): Node "ARDUINO_IO[10]~synth" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 34
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: /home/marius/Documents/noise_cancelling/main.vhd Line: 35
+    Warning (13010): Node "ARDUINO_IO[0]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[1]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[2]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[3]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[4]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[5]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[6]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[8]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[9]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[10]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
+    Warning (13010): Node "ARDUINO_IO[14]~synth" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 40
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[3] will power up to High File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 123
-    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[2] will power up to High File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 123
-    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[1] will power up to High File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 123
-    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[0] will power up to High File: /home/marius/Documents/noise_cancelling/ADCReader.vhd Line: 123
+    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[3] will power up to High File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 123
+    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[2] will power up to High File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 123
+    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[1] will power up to High File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 123
+    Critical Warning (18010): Register ADCReader:adc_noise|current_bit_counter[0] will power up to High File: /home/marius/Documents/NoiseCancelling_Proj/nc/ADCReader.vhd Line: 123
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 24 assignments for entity "ADC_DAC" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity ADC_DAC -section_id Top was ignored
@@ -548,26 +754,27 @@ Warning (20013): Ignored 24 assignments for entity "ADC_DAC" -- entity does not 
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 11 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 33
-    Warning (15610): No output dependent on input pin "SW[0]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[1]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[2]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[3]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[4]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[5]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[6]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[7]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[8]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-    Warning (15610): No output dependent on input pin "SW[9]" File: /home/marius/Documents/noise_cancelling/main.vhd Line: 36
-Info (21057): Implemented 176 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 39
+    Warning (15610): No output dependent on input pin "SW[0]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[1]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[2]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[3]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[4]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[5]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[6]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[7]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[8]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+    Warning (15610): No output dependent on input pin "SW[9]" File: /home/marius/Documents/NoiseCancelling_Proj/nc/main.vhd Line: 43
+Info (21057): Implemented 393 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 10 output pins
-    Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 137 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 90 warnings
-    Info: Peak virtual memory: 948 megabytes
-    Info: Processing ended: Fri May 15 16:27:49 2020
-    Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:22
+    Info (21060): Implemented 52 bidirectional pins
+    Info (21061): Implemented 316 logic cells
+    Info (21062): Implemented 2 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 119 warnings
+    Info: Peak virtual memory: 964 megabytes
+    Info: Processing ended: Fri May 22 17:16:46 2020
+    Info: Elapsed time: 00:00:29
+    Info: Total CPU time (on all processors): 00:00:39
 
 

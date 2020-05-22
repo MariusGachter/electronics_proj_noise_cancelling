@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484ES) Path("/home/marius/Documents/noise_cancelling/output_files/") File("noise_cancelling.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484ES) Path("/home/marius/Documents/NoiseCancelling_Proj/nc/output_files/") File("noise_cancelling.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

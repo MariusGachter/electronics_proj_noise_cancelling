@@ -21,7 +21,7 @@ class ApbBus extends Component {
 		val spi    = master(SpiSlave())
 		
 		
-		val inGain = in Bits(32 bits)
+		val outGain = out Bits(32 bits)
 		
 		
 		// an output
@@ -41,7 +41,7 @@ class ApbBus extends Component {
 	
 	
 	//attach the gain coefficient to the bus
-	busCtrl.read(io.inGain, address = 100)
+	busCtrl.driveAndRead(io.outGain, address = 100)
 	
 	
 	// add an output on address 10 which we can also read back:

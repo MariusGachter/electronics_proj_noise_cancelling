@@ -1,16 +1,16 @@
-Analysis & Synthesis Status : Successful - Fri May 15 16:27:49 2020
+Analysis & Synthesis Status : Successful - Fri May 22 17:16:46 2020
 Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 Revision Name : noise_cancelling
 Top-level Entity Name : NC
 Family : MAX 10
-Total logic elements : 135
-    Total combinational functions : 117
-    Dedicated logic registers : 89
-Total registers : 89
-Total pins : 39
+Total logic elements : 313
+    Total combinational functions : 251
+    Dedicated logic registers : 228
+Total registers : 228
+Total pins : 75
 Total virtual pins : 0
 Total memory bits : 0
-Embedded Multiplier 9-bit elements : 0
+Embedded Multiplier 9-bit elements : 2
 Total PLLs : 0
 UFM blocks : 0
 ADC blocks : 0
