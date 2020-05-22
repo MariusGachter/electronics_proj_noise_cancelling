@@ -21,6 +21,12 @@ use IEEE.NUMERIC_STD.all;
 -- arduino_io( 9) : adc2_sck    (serial clock)
 -- arduino_io(10) : adc2_sdi    (data in)
 -- arduino_io(11) : adc2_sdo    (data out)
+--
+-- BUS: 
+-- io_spi_sclk             => ARDUINO_IO(12),
+-- io_spi_mosi             => ARDUINO_IO(13),
+-- io_spi_miso_write       => ARDUINO_IO(14),
+-- io_spi_ss               => GPIO(1),
 -- Also power the digital side of the DAC board with 3.3V and connect the ground.
 -- CAUTION: DON'T USE THE 5V OUTPUT, USE 3.3V!
 
@@ -32,6 +38,7 @@ port(
   MAX10_CLK1_50 : in std_logic;                         -- 50 HMz clock
   KEY           : in std_logic_vector(1 downto 0);      -- Buttons
   ARDUINO_IO    : inout std_logic_vector(15 downto 0);  -- Header pins
+  GPIO          : inout std_logic_vector(35 downto 0);  -- for slave select
   LEDR          : out std_logic_vector(9 downto 0);     -- LEDs
   SW            : in  std_logic_vector(9 downto 0)      -- Switches
 );
@@ -69,6 +76,9 @@ architecture arch of NC is
   signal adc_sound_in     : signed(15 downto 0);
   signal adc_noise_in	  : signed(15 downto 0);
   signal dac_sound_out	  : signed(15 downto 0);
+  
+  -- bus stuff
+  signal in_gain_coeff  : std_logic_vector(31 downto 0);
   
 begin
 
@@ -140,13 +150,25 @@ begin
   );
   
 
+  -- instantiate the bus
+  myBus : entity work.ApbBus
+  port map(
+    io_spi_sclk             => ARDUINO_IO(12),
+    io_spi_mosi             => ARDUINO_IO(13),
+    io_spi_miso_write       => ARDUINO_IO(14),
+    io_spi_miso_writeEnable => open,
+    io_spi_ss               => GPIO(1),
+	 
+    io_inGain  => in_gain_coeff,
+    clk => MAX10_CLK1_50,
+    reset => reset);
   
   -- reset and clk
   reset <= not key(0);
   clk   <= MAX10_CLK1_50;
 
 	
-  dac_sound_out <= adc_sound_in;
+  dac_sound_out <= adc_noise_in*in_gain_coeff;
   
   -- the signals to the DAC sound out:
   arduino_io(0)  <= dac_cs_n;
