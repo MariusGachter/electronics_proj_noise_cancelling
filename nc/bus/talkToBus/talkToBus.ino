@@ -13,6 +13,6 @@ void setup() {
 
 void loop() {
   long readVal = apb.read(20);
-  apb.write(10,readVal);
+  apb.write(10,1000);
   delay(1000);
 }
