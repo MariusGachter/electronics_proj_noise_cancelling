@@ -41,7 +41,7 @@ class ApbBus extends Component {
 	
 	
 	//attach the gain coefficient to the bus
-	busCtrl.driveAndRead(io.outGain, address = 100)
+	busCtrl.driveAndRead(io.outGain, address = 10)
 	
 	
 	// add an output on address 10 which we can also read back:
