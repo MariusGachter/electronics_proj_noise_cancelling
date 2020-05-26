@@ -1,44 +1,35 @@
-[0m[[0m[0mdebug[0m] [0m[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial source changes: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	removed:Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(/home/marius/Documents/NoiseCancelling_Proj/nc/bus/bus.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(ApbTestVhdl, ApbBus)[0m
-[0m[[0m[0mdebug[0m] [0m[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(ApbTestVhdl, ApbBus)[0m
-[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(/home/marius/Documents/NoiseCancelling_Proj/nc/bus/bus.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: ApbTestVhdl, ApbBus[0m
-[0m[[0m[0minfo[0m] [0m[0mCompiling 1 Scala source to /home/marius/Documents/NoiseCancelling_Proj/nc/bus/target/scala-2.11/classes ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.11:1.3.5:compile for Scala 2.11.12[0m
-[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.11:1.3.5:compile for Scala 2.11.12[0m
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 563dc49c for Scala compiler version 2.11.12[0m
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-Xplugin:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-idsl-plugin_2.11/1.4.0/spinalhdl-idsl-plugin_2.11-1.4.0.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.12/scala-library-2.11.12.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/home/marius/Documents/NoiseCancelling_Proj/nc/bus/target/scala-2.11/classes:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-core_2.11/1.4.0/spinalhdl-core_2.11-1.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-lib_2.11/1.4.0/spinalhdl-lib_2.11-1.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-idsl-plugin_2.11/1.4.0/spinalhdl-idsl-plugin_2.11-1.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-sim_2.11/1.4.0/spinalhdl-sim_2.11-1.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.12/scala-reflect-2.11.12.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/scopt/scopt_2.11/3.4.0/scopt_2.11-3.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.11.12/scala-compiler-2.11.12.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/spinalhdl/spinalhdl-idsl-payload_2.11/1.4.0/spinalhdl-idsl-payload_2.11-1.4.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/net/openhft/affinity/3.1.11/affinity-3.1.11.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.11/1.0.5/scala-xml_2.11-1.0.5.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/4.2.2/jna-4.2.2.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/4.2.2/jna-platform-4.2.2.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/intellij/annotations/12.0/annotations-12.0.jar:/home/marius/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/oshi/oshi-core/3.4.0/oshi-core-3.4.0.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 6.032157601 s[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone compiling.[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from ApbBus...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: ApbBus[0m
-[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(ApbBus)[0m
-[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(ApbBus,ModifiedNames(changes = UsedName(inGain,[Default]), UsedName(io,[Default]), UsedName(outGain,[Default]))) invalidates 1 classes due to The ApbBus has the following regular definitions changed:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	UsedName(inGain,[Default]), UsedName(io,[Default]), UsedName(outGain,[Default]).[0m
-[0m[[0m[0mdebug[0m] [0m[0m	> by transitive inheritance: Set(ApbBus)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	> [0m
-[0m[[0m[0mdebug[0m] [0m[0m	> [0m
-[0m[[0m[0mdebug[0m] [0m[0m        [0m
-[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
-[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m
+[debug] 
+[debug] Initial source changes: 
+[debug] 	removed:Set()
+[debug] 	added: Set()
+[debug] 	modified: Set(C:\Users\Florian\electronics_proj_noise_cancelling\nc\bus\bus.scala)
+[debug] Invalidated products: Set()
+[debug] External API changes: API Changes: Set()
+[debug] Modified binary dependencies: Set()
+[debug] Initial directly invalidated classes: Set(ApbBus, ApbTestVhdl)
+[debug] 
+[debug] Sources indirectly invalidated by:
+[debug] 	product: Set()
+[debug] 	binary dep: Set()
+[debug] 	external source: Set()
+[debug] All initially invalidated classes: Set(ApbBus, ApbTestVhdl)
+[debug] All initially invalidated sources:Set(C:\Users\Florian\electronics_proj_noise_cancelling\nc\bus\bus.scala)
+[debug] Initial set of included nodes: ApbBus, ApbTestVhdl
+[info] Compiling 1 Scala source to C:\Users\Florian\electronics_proj_noise_cancelling\nc\bus\target\scala-2.11\classes ...
+[debug] Getting org.scala-sbt:compiler-bridge_2.11:1.3.5:compile for Scala 2.11.12
+[debug] Getting org.scala-sbt:compiler-bridge_2.11:1.3.5:compile for Scala 2.11.12
+[debug] [zinc] Running cached compiler 26606485 for Scala compiler version 2.11.12
+[debug] [zinc] The Scala compiler is invoked with:
+[debug] 	-Xplugin:C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-idsl-plugin_2.11\1.4.0\spinalhdl-idsl-plugin_2.11-1.4.0.jar
+[debug] 	-bootclasspath
+[debug] 	C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\resources.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\rt.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\sunrsasign.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\jsse.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\jce.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\charsets.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\lib\jfr.jar;C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\jre\classes;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.11.12\scala-library-2.11.12.jar
+[debug] 	-classpath
+[debug] 	C:\Users\Florian\electronics_proj_noise_cancelling\nc\bus\target\scala-2.11\classes;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-core_2.11\1.4.0\spinalhdl-core_2.11-1.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-lib_2.11\1.4.0\spinalhdl-lib_2.11-1.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-idsl-plugin_2.11\1.4.0\spinalhdl-idsl-plugin_2.11-1.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-sim_2.11\1.4.0\spinalhdl-sim_2.11-1.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.11.12\scala-reflect-2.11.12.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\scopt\scopt_2.11\3.4.0\scopt_2.11-3.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-compiler\2.11.12\scala-compiler-2.11.12.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\spinalhdl\spinalhdl-idsl-payload_2.11\1.4.0\spinalhdl-idsl-payload_2.11-1.4.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\net\openhft\affinity\3.1.11\affinity-3.1.11.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\slf4j\slf4j-simple\1.7.25\slf4j-simple-1.7.25.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\modules\scala-xml_2.11\1.0.5\scala-xml_2.11-1.0.5.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\modules\scala-parser-combinators_2.11\1.0.4\scala-parser-combinators_2.11-1.0.4.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\net\java\dev\jna\jna\4.2.2\jna-4.2.2.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\net\java\dev\jna\jna-platform\4.2.2\jna-platform-4.2.2.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\intellij\annotations\12.0\annotations-12.0.jar;C:\Users\Florian\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\github\oshi\oshi-core\3.4.0\oshi-core-3.4.0.jar
+[debug] Scala compilation took 1.9158875 s
+[info] Done compiling.
+[debug] New invalidations:
+[debug] 	Set()
+[debug] Initial set of included nodes: 
+[debug] Previously invalidated, but (transitively) depend on new invalidations:
+[debug] 	Set()
+[debug] No classes were invalidated.

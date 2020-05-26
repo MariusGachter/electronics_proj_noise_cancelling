@@ -1,5 +1,5 @@
 Flow report for noise_cancelling
-Fri May 22 17:30:34 2020
+Tue May 26 16:12:32 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri May 22 17:30:28 2020       ;
+; Flow Status                        ; Successful - Tue May 26 16:12:26 2020       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; noise_cancelling                            ;
 ; Top-level Entity Name              ; NC                                          ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 295 / 49,760 ( < 1 % )                      ;
-;     Total combinational functions  ; 253 / 49,760 ( < 1 % )                      ;
-;     Dedicated logic registers      ; 212 / 49,760 ( < 1 % )                      ;
-; Total registers                    ; 212                                         ;
+; Total logic elements               ; 416 / 49,760 ( < 1 % )                      ;
+;     Total combinational functions  ; 351 / 49,760 ( < 1 % )                      ;
+;     Dedicated logic registers      ; 244 / 49,760 ( < 1 % )                      ;
+; Total registers                    ; 244                                         ;
 ; Total pins                         ; 75 / 360 ( 21 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                       ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/22/2020 17:29:24 ;
+; Start date & time ; 05/26/2020 16:11:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; noise_cancelling    ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value    ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 8796763798773.159016136416185          ; --               ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 140845739653571.159050229703956        ; --               ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --               ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --               ; --          ; --         ;
 ; MISC_FILE                           ; FIR_COEF_RAM.cmp                       ; --               ; --          ; --         ;
@@ -100,24 +100,24 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 954 MB              ; 00:00:35                           ;
-; Fitter               ; 00:00:25     ; 1.0                     ; 1376 MB             ; 00:00:25                           ;
-; Assembler            ; 00:00:09     ; 1.0                     ; 822 MB              ; 00:00:09                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.2                     ; 859 MB              ; 00:00:04                           ;
-; Total                ; 00:01:03     ; --                      ; --                  ; 00:01:13                           ;
+; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4815 MB             ; 00:00:43                           ;
+; Fitter               ; 00:00:20     ; 1.0                     ; 5399 MB             ; 00:00:24                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4701 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.1                     ; 4809 MB             ; 00:00:05                           ;
+; Total                ; 00:00:51     ; --                      ; --                  ; 00:01:17                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                         ;
-+----------------------+-------------------+----------------+------------+----------------+
-; Module Name          ; Machine Hostname  ; OS Name        ; OS Version ; Processor type ;
-+----------------------+-------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; marius-VirtualBox ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
-; Fitter               ; marius-VirtualBox ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
-; Assembler            ; marius-VirtualBox ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
-; Timing Analyzer      ; marius-VirtualBox ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
-+----------------------+-------------------+----------------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------

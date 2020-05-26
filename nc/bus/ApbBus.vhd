@@ -1,5 +1,5 @@
 -- Generator : SpinalHDL v1.4.0    git head : ecb5a80b713566f417ea3ea061f9969e73770a7f
--- Date      : 22/05/2020, 16:38:36
+-- Date      : 22/05/2020, 21:18:15
 -- Component : ApbBus
 
 library IEEE;
@@ -925,7 +925,7 @@ begin
   begin
     zz_2 <= pkg_stdLogicVector("00000000000000000000000000000000");
     case busMaster_io_apb_PADDR is
-      when "00000000000000000000000001100100" =>
+      when "00000000000000000000000000001010" =>
         zz_2(31 downto 0) <= io_outGain_driver;
       when others =>
     end case;
@@ -940,7 +940,7 @@ begin
   begin
     if rising_edge(clk) then
       case busMaster_io_apb_PADDR is
-        when "00000000000000000000000001100100" =>
+        when "00000000000000000000000000001010" =>
           if busCtrl_doWrite = '1' then
             io_outGain_driver <= pkg_extract(busMaster_io_apb_PWDATA,31,0);
           end if;

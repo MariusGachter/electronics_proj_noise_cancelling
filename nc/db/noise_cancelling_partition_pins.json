@@ -80,6 +80,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "ARDUINO_IO[11]",
+					"strict" : false
+				},
+				{
 					"name" : "ARDUINO_IO[12]",
 					"strict" : false
 				},

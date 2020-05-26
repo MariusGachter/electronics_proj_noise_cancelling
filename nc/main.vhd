@@ -170,12 +170,16 @@ begin
   clk   <= MAX10_CLK1_50;
 
   
-  LEDR(9 downto 0) <= std_logic_vector(in_gain_coeff)(9 downto 0);
+  LEDR(9 downto 0) <= std_logic_vector(unsigned(in_gain_coeff)(9 downto 0));
   
   --coeff_gain <= to_signed(100,16);
-  coeff_gain <= signed(in_gain_coeff(15 downto 0));
-  gain_multiplier <= adc_sound_in*coeff_gain;
-  dac_sound_out <= gain_multiplier(29 downto 14);
+  --coeff_gain <= signed(in_gain_coeff(15 downto 0));
+  --gain_multiplier <= adc_sound_in*coeff_gain;
+  --dac_sound_out <= gain_multiplier(29 downto 14);
+  
+  
+  dac_sound_out <= signed(adc_sound_in*2000 + adc_noise_in*signed(in_gain_coeff(15 downto 0)))(29 downto 14);
+  --dac_sound_out <= adc_noise_in;
   --dac_sound_out <= adc_sound_in;
   arduino_io(0)  <= dac_cs_n;
   arduino_io(1)  <= dac_sclk;
