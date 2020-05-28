@@ -1,5 +1,5 @@
 Flow report for noise_cancelling
-Tue May 26 16:12:32 2020
+Fri May 29 00:22:31 2020
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue May 26 16:12:26 2020       ;
+; Flow Status                        ; Successful - Fri May 29 00:22:20 2020       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; noise_cancelling                            ;
 ; Top-level Entity Name              ; NC                                          ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 416 / 49,760 ( < 1 % )                      ;
-;     Total combinational functions  ; 351 / 49,760 ( < 1 % )                      ;
-;     Dedicated logic registers      ; 244 / 49,760 ( < 1 % )                      ;
-; Total registers                    ; 244                                         ;
+; Total logic elements               ; 2,752 / 49,760 ( 6 % )                      ;
+;     Total combinational functions  ; 2,683 / 49,760 ( 5 % )                      ;
+;     Dedicated logic registers      ; 1,005 / 49,760 ( 2 % )                      ;
+; Total registers                    ; 1005                                        ;
 ; Total pins                         ; 75 / 360 ( 21 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                       ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/26/2020 16:11:38 ;
+; Start date & time ; 05/29/2020 00:20:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; noise_cancelling    ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value    ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 140845739653571.159050229703956        ; --               ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 255543654088953.159070445517412        ; --               ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --               ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --               ; --          ; --         ;
 ; MISC_FILE                           ; FIR_COEF_RAM.cmp                       ; --               ; --          ; --         ;
@@ -92,6 +92,8 @@ https://fpgasoftware.intel.com/eula.
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --               ; --          ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --               ; --          ; --         ;
 ; TOP_LEVEL_ENTITY                    ; NC                                     ; noise_cancelling ; --          ; --         ;
+; VHDL_INPUT_VERSION                  ; VHDL_2008                              ; VHDL_1993        ; --          ; --         ;
+; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                    ; --               ; --          ; --         ;
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
 
 
@@ -100,11 +102,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4815 MB             ; 00:00:43                           ;
-; Fitter               ; 00:00:20     ; 1.0                     ; 5399 MB             ; 00:00:24                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 4701 MB             ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.1                     ; 4809 MB             ; 00:00:05                           ;
-; Total                ; 00:00:51     ; --                      ; --                  ; 00:01:17                           ;
+; Analysis & Synthesis ; 00:00:30     ; 1.0                     ; 4877 MB             ; 00:00:54                           ;
+; Fitter               ; 00:00:45     ; 1.4                     ; 5774 MB             ; 00:01:24                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4720 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:10     ; 1.7                     ; 4871 MB             ; 00:00:14                           ;
+; Total                ; 00:01:30     ; --                      ; --                  ; 00:02:37                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -113,10 +115,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; Florian-PC       ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; DESKTOP-L4M16SV  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-L4M16SV  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-L4M16SV  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-L4M16SV  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
