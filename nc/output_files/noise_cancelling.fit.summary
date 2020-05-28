@@ -1,14 +1,14 @@
-Fitter Status : Successful - Fri May 29 00:22:13 2020
+Fitter Status : Successful - Fri May 29 00:34:12 2020
 Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 Revision Name : noise_cancelling
 Top-level Entity Name : NC
 Family : MAX 10
 Device : 10M50DAF484C6GES
 Timing Models : Preliminary
-Total logic elements : 2,752 / 49,760 ( 6 % )
-    Total combinational functions : 2,683 / 49,760 ( 5 % )
-    Dedicated logic registers : 1,005 / 49,760 ( 2 % )
-Total registers : 1005
+Total logic elements : 2,758 / 49,760 ( 6 % )
+    Total combinational functions : 2,692 / 49,760 ( 5 % )
+    Dedicated logic registers : 1,018 / 49,760 ( 2 % )
+Total registers : 1018
 Total pins : 75 / 360 ( 21 % )
 Total virtual pins : 0
 Total memory bits : 0 / 1,677,312 ( 0 % )
